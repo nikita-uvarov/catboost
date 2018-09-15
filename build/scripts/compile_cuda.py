@@ -36,8 +36,8 @@ def main():
         cflags.remove('-fopenmp=libomp')
         
     if '-std=c++14' in command:
-        print 'Replacing -std=c++14 with -std=c++1y'
-        command[command.index('-std=c++14')] = '-std=c++1y'
+        print 'Replacing -std=c++14 with -std=c++11'
+        command[command.index('-std=c++14')] = '-std=c++11'
     print 'Final command:', command
 
     skip_list = [
