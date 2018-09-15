@@ -24,7 +24,7 @@ before_script: |
     #
     unset CC
     unset CXX
-    sudo pip2 install pycurl --install-option "--libcurl-dll=libcurl.so" || echo "Probably already installed"
+    sudo pip2 install pycurl==7.43.0.1 || echo "Probably already installed"
     pip install webdavclient || sudo pip2 install webdavclient
 
 matrix:
