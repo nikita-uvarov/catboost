@@ -56,7 +56,7 @@ def main():
         '--system-header-prefix',
     ]
     for prefix in skip_prefix_list:
-        cflags = [i for i in cflags if not i.startswith(prefix)]
+        cflags = [i.replace('-std=c++14', '-std=c++1y') for i in cflags if not i.startswith(prefix)]
 
     cpp_args = []
     compiler_args = []
