@@ -22,6 +22,9 @@ elif "TRAVIS_BUILD_NUMBER" in os.environ:
 else:
     work_dir = base_dir + "/" + "unknown"
 
+if not client.check(base_dir):
+    client.mkdir(base_dir)
+    
 if not client.check(work_dir):
     client.mkdir(work_dir)
 
