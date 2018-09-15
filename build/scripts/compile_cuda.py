@@ -34,6 +34,11 @@ def main():
     if not is_clang(command) and '-fopenmp=libomp' in cflags:
         cflags.append('-fopenmp')
         cflags.remove('-fopenmp=libomp')
+        
+    if '-std=c++14' in command:
+        print 'Replacing -std=c++14 with -std=c++1y'
+        command[command.index('-std=c++14')] = '-std=c++1y'
+    print 'Final command:', command
 
     skip_list = [
         '-nostdinc++',  # CUDA uses system STL library
@@ -56,7 +61,7 @@ def main():
         '--system-header-prefix',
     ]
     for prefix in skip_prefix_list:
-        cflags = [i.replace('-std=c++14', '-std=c++1y') for i in cflags if not i.startswith(prefix)]
+        cflags = [i for i in cflags if not i.startswith(prefix)]
 
     cpp_args = []
     compiler_args = []
