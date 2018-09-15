@@ -35,9 +35,21 @@ def main():
         cflags.append('-fopenmp')
         cflags.remove('-fopenmp=libomp')
         
+    # -std=c++14 is not supported by nvcc 8.0
     if '-std=c++14' in command:
         print 'Replacing -std=c++14 with -std=c++11'
         command[command.index('-std=c++14')] = '-std=c++11'
+    
+    # compute_70 is not supported by nvcc 8.0
+    i = 0
+    while i < len(command):
+        if 'compute_70' in command[i]:
+            del command[i - 1]
+            del command[i]
+            i -= 1
+        else:
+            i += 1
+        
     print 'Final command:', command
 
     skip_list = [
