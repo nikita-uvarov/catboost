@@ -24,7 +24,8 @@ before_script: |
     #
     unset CC
     unset CXX
-    pip install webdavclient || sudo pip2 install webdavclient
+    pip install pycurl --install-option "--libcurl-dll=libcurl.so" || echo "Probably already installed"
+    pip install webdavclient --install-option "--with-openssl" || sudo pip2 install webdavclient --install-option "--with-openssl"
 
 matrix:
   include:
