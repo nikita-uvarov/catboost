@@ -45,7 +45,7 @@ def main():
     while i < len(command):
         if 'compute_70' in command[i]:
             del command[i - 1]
-            del command[i]
+            del command[i - 1]
             i -= 1
         else:
             i += 1
