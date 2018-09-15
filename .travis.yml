@@ -26,9 +26,6 @@ before_script: |
     unset CXX
     pip install webdavclient || sudo pip2 install webdavclient
 
-    # Fix for '__main__.ConfigurationError: Curl is configured to use SSL, ...'
-    pip install pycurl==7.43.0.1 --global-option="--with-gnutls" --compile --upgrade --no-cache-dir
-
 matrix:
   include:
     - os: linux
