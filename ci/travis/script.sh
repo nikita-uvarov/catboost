@@ -6,7 +6,7 @@ fi
 
 function install_cuda_linux()
 {
-    if [ "$1" -ne "xenial" ]; then
+    if [[ "$1" != "xenial" ]]; then
         wget -q https://developer.nvidia.com/compute/cuda/8.0/Prod2/local_installers/cuda-repo-ubuntu1404-8-0-local-ga2_8.0.61-1_amd64-deb -O cuda-repo-ubuntu1404-8-0-local-ga2_8.0.61-1_amd64.deb
         sudo dpkg -i cuda-repo-ubuntu1404-8-0-local-ga2_8.0.61-1_amd64.deb
     else
