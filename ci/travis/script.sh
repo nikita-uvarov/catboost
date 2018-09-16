@@ -24,8 +24,7 @@ function install_cuda_linux()
 
 if [ "${CB_BUILD_AGENT}" == 'clang-linux-x86_64-release-cuda' ]; then
     install_cuda_linux xenial;
-     sudo ln -s /usr/local/cuda-9.0 /usr/local/cuda
-    ./ya make --no-emit-status --stat -T -r -j 1 catboost/app -DCUDA_ROOT=/usr/local/cuda-9.0 -DNO_DEBUGINFO;
+    ./ya make --no-emit-status --stat -T -r -j 1 catboost/app -DCUDA_ROOT=/usr/local/cuda-9.2 -DNO_DEBUGINFO;
     cp $(readlink -f catboost/app/catboost) catboost-cuda-linux;
     python ci/webdav_upload.py catboost-cuda-linux
 fi
