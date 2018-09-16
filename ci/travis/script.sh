@@ -6,8 +6,14 @@ fi
 
 function install_cuda_linux()
 {
-    wget -q https://developer.nvidia.com/compute/cuda/8.0/Prod2/local_installers/cuda-repo-ubuntu1404-8-0-local-ga2_8.0.61-1_amd64-deb -O cuda-repo-ubuntu1404-8-0-local-ga2_8.0.61-1_amd64.deb
-    sudo dpkg -i cuda-repo-ubuntu1404-8-0-local-ga2_8.0.61-1_amd64.deb
+    if [ "$1" -neq "xenial" ]; then
+        wget -q https://developer.nvidia.com/compute/cuda/8.0/Prod2/local_installers/cuda-repo-ubuntu1404-8-0-local-ga2_8.0.61-1_amd64-deb -O cuda-repo-ubuntu1404-8-0-local-ga2_8.0.61-1_amd64.deb
+        sudo dpkg -i cuda-repo-ubuntu1404-8-0-local-ga2_8.0.61-1_amd64.deb
+    else
+        wget -q https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1604/x86_64/cuda-repo-ubuntu1604_9.0.176-1_amd64.deb -O cuda-repo-ubuntu1604_9.0.176-1_amd64.deb
+        sudo dpkg -i cuda-repo-ubuntu1604_9.0.176-1_amd64.deb
+    fi
+ 
     sudo apt-get update -qq -o=Dpkg::Use-Pty=0
     sudo apt-get install -qq -o=Dpkg::Use-Pty=0 cuda    
 }
