@@ -10,6 +10,7 @@ function install_cuda_linux()
         wget -q https://developer.nvidia.com/compute/cuda/8.0/Prod2/local_installers/cuda-repo-ubuntu1404-8-0-local-ga2_8.0.61-1_amd64-deb -O cuda-repo-ubuntu1404-8-0-local-ga2_8.0.61-1_amd64.deb
         sudo dpkg -i cuda-repo-ubuntu1404-8-0-local-ga2_8.0.61-1_amd64.deb
     else
+        echo "Installing for Xenial CUDA 9.0!"
         wget -q https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1604/x86_64/cuda-repo-ubuntu1604_9.0.176-1_amd64.deb -O cuda-repo-ubuntu1604_9.0.176-1_amd64.deb
         sudo dpkg -i cuda-repo-ubuntu1604_9.0.176-1_amd64.deb
     fi
@@ -20,7 +21,7 @@ function install_cuda_linux()
 
 
 if [ "${CB_BUILD_AGENT}" == 'clang-linux-x86_64-release-cuda' ]; then
-    install_cuda_linux;
+    install_cuda_linux xenial;
     ./ya make --no-emit-status --stat -T -r -j 1 catboost/app -DCUDA_ROOT=/usr/local/cuda-8.0 -DNO_DEBUGINFO;
     cp $(readlink -f catboost/app/catboost) catboost-cuda-linux;
     python ci/webdav_upload.py catboost-cuda-linux
