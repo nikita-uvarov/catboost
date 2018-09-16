@@ -12,7 +12,7 @@ function install_cuda_linux()
     else
         echo "Installing for Xenial CUDA 9.0!"
         sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys F60F4B3D7FA2AF80
-        wget -q https://developer.nvidia.com/compute/cuda/9.0/Prod/local_installers/cuda-repo-ubuntu1604_9.0.176-1_amd64.deb -O cuda-repo-ubuntu1604_9.0.176-1_amd64.deb
+        wget -q https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1604/x86_64/cuda-repo-ubuntu1604_9.0.176-1_amd64.deb -O cuda-repo-ubuntu1604_9.0.176-1_amd64.deb
         sudo dpkg -i cuda-repo-ubuntu1604_9.0.176-1_amd64.deb
     fi
  
